@@ -60,6 +60,10 @@ public class FlyingEye : MonoBehaviour
     void AutoDeath()
     {
         Destroy(gameObject);
+
         Debug.Log("PlayMusic");
+
+        Debug.Log("Dead");
+
     }
 }
