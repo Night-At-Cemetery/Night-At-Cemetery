@@ -60,5 +60,6 @@ public class FlyingEye : MonoBehaviour
     void AutoDeath()
     {
         Destroy(gameObject);
+        Debug.Log("Dead");
     }
 }
