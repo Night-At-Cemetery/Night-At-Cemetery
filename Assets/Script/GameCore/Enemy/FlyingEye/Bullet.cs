@@ -6,21 +6,22 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] GameObject Player;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioboom; 
     Vector2 Playerposition;
     private void Start()
     {
         Playerposition=Player.transform.position;
     }
-    private void Update()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, Time.deltaTime * 10f);
-    }
+    
         
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             animator.SetTrigger("Boom");
+            audioSource.clip = audioboom;
+            audioSource.Play();
 
         }
     }

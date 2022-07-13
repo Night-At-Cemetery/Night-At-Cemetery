@@ -6,11 +6,16 @@ public class Mushroom : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] AudioSource audioSource;
+   // [SerializeField] AudioClip Audioattack;
+    [SerializeField] AudioClip AudioTakeHit;
+    
     Vector2 MushroomPosition;
     bool checkMove=false;
     // Start is called before the first frame update
     void Start()
     {
+        
         MushroomPosition=transform.position;
     }
 
@@ -25,6 +30,7 @@ public class Mushroom : MonoBehaviour
         if (checkMove == false)
         {
             transform.Translate(Vector2.up*Time.deltaTime);
+            
         }
         if (Vector2.Distance(transform.position, MushroomPosition) - 3 >= 0.1f)
         {
@@ -42,10 +48,11 @@ public class Mushroom : MonoBehaviour
     }
     void FeelPlayerNear()
     {
-        Collider2D player = Physics2D.OverlapCircle(transform.position, 3f, playerLayer);
-        if (player)
+        Collider2D playernear = Physics2D.OverlapCircle(transform.position, 3f, playerLayer);
+        if (playernear)
         {
             animator.SetBool("Attack",true);
+          
         }
     }
     public void StopAttack()
@@ -54,7 +61,11 @@ public class Mushroom : MonoBehaviour
     }
     void AutoTakeHit()
     {
-        if (/* neu bi tan cong*/true) { animator.SetTrigger("TakeHit"); }
+        if (/* neu bi tan cong*/true) { 
+            animator.SetTrigger("TakeHit");
+            audioSource.clip = AudioTakeHit;
+            audioSource.Play();
+        }
     }
     void AutoDeath()
     {

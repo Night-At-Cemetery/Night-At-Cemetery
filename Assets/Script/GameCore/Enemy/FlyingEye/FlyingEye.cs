@@ -25,6 +25,7 @@ public class FlyingEye : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         FeelPlayer();
         //AutoTakeHit();
     }
@@ -41,7 +42,7 @@ public class FlyingEye : MonoBehaviour
                 
             }
         }else { animator.SetBool("Attack", false); }
-        if (BulletInstate != null) { BulletInstate.transform.position = Vector3.MoveTowards(BulletInstate.transform.position, Player.transform.position, Time.deltaTime*10f); }
+        if (BulletInstate != null) { BulletInstate.transform.position = Vector3.MoveTowards(BulletInstate.transform.position, Player.transform.position, Time.deltaTime*5f); }
     }
     // Tan cong nhan vat
     public void AttackPlayer()
