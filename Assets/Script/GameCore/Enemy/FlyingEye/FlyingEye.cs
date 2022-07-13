@@ -11,6 +11,10 @@ public class FlyingEye : MonoBehaviour
     bool checkAttack=false;
     [SerializeField] GameObject Bullet;
     GameObject BulletInstate;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip Audioattack;
+    [SerializeField] AudioClip AudioTakeHit;
+   // [SerializeField] AudioClip Audiodead;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +38,7 @@ public class FlyingEye : MonoBehaviour
             if (player)
             {
                 animator.SetBool("Attack", true);
+                
             }
         }else { animator.SetBool("Attack", false); }
         if (BulletInstate != null) { BulletInstate.transform.position = Vector3.MoveTowards(BulletInstate.transform.position, Player.transform.position, Time.deltaTime*10f); }
@@ -42,6 +47,8 @@ public class FlyingEye : MonoBehaviour
     public void AttackPlayer()
     {
         playerPosition = Player.transform.position;
+        audioSource.clip = Audioattack;
+        audioSource.Play();
         BulletFly();
 
         checkAttack=true;
@@ -55,10 +62,17 @@ public class FlyingEye : MonoBehaviour
     // Chet
     void AutoTakeHit()
     {
-        if(/* neu bi tan cong*/true) { animator.SetTrigger("TakeHit"); }
+        if(/* neu bi tan cong*/true) { 
+            animator.SetTrigger("TakeHit");
+            audioSource.clip = AudioTakeHit;
+            audioSource.Play();
+        }
+
     }
     void AutoDeath()
     {
+       // audioSource.clip = Audiodead;
+        //audioSource.Play();
         Destroy(gameObject);
     }
 }
