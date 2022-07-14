@@ -74,5 +74,6 @@ public class FlyingEye : MonoBehaviour
        // audioSource.clip = Audiodead;
         //audioSource.Play();
         Destroy(gameObject);
+        Debug.Log("Dead");
     }
 }
