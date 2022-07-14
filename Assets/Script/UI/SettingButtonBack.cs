@@ -23,4 +23,5 @@ public class SettingButtonBack : MonoBehaviour
         button.onClick.RemoveListener(ClicktoBackMenu);
 
     }
+    
 }

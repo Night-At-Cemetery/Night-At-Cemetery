@@ -264,6 +264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1377a303c07fb534e87d9a1cba520c08, type: 3}
+--- !u!212 &671425168 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 20626272799221227, guid: 764aee1cf59c0ee45b170c93f1da7f83, type: 3}
+  m_PrefabInstance: {fileID: 1146458465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1052064102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,6 +333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 20626272799221226, guid: 764aee1cf59c0ee45b170c93f1da7f83, type: 3}
+      propertyPath: sRender
+      value: 
+      objectReference: {fileID: 671425168}
     - target: {fileID: 20626272799221227, guid: 764aee1cf59c0ee45b170c93f1da7f83, type: 3}
       propertyPath: m_FlipX
       value: 0

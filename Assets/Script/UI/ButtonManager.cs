@@ -24,6 +24,7 @@ public class ButtonManager : MonoBehaviour
     {
         audioSource.PlayOneShot(click);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+        
         NewGameButton.onClick.RemoveListener(clickNewGame);
        
     }
