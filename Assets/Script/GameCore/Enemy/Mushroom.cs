@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class Mushroom : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer sRender;
     [SerializeField] Animator animator;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] AudioSource audioSource;
    // [SerializeField] AudioClip Audioattack;
     [SerializeField] AudioClip AudioTakeHit;
+
+    //public float fadeInDuration;
+    public float fadeInDuration;
     
     Vector2 MushroomPosition;
     bool checkMove=false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(FadeIn(fadeInDuration));
         MushroomPosition=transform.position;
     }
 
@@ -25,11 +30,12 @@ public class Mushroom : MonoBehaviour
         FeelPlayer();
        // AutoTakeHit();
     }
+
     void MoveBefore()
     {
         if (checkMove == false)
         {
-            transform.Translate(Vector2.up*Time.deltaTime);
+            transform.Translate(Vector2.up * Time.deltaTime);
             
         }
         if (Vector2.Distance(transform.position, MushroomPosition) - 3 >= 0.1f)
@@ -71,4 +77,20 @@ public class Mushroom : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    IEnumerator FadeIn(float duration)
+    {
+        float timePassed = 0;
+        while (timePassed < duration)
+        {
+            Color newColor = sRender.color;
+            newColor.a = timePassed / duration;
+            sRender.color = newColor;
+
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+    }
 }
+
