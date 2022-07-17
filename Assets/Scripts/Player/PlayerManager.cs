@@ -1,9 +1,10 @@
 using System.Collections;
+using MoreMountains.Tools;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : PlayableCharacter, MMEventListener<MMGameEvent>
     {
         public PlayerController player;
         
@@ -144,10 +145,22 @@ namespace Player
             
         }
 
+        public virtual void GameStart()
+        {
+            // _rigidbodyInterface.IsKinematic(false);
+        }
         IEnumerator ShieldTimeout()
         {
             yield return new WaitForSeconds(shieldDuration);
             BreakShield();
+        }
+
+        public void OnMMEvent(MMGameEvent gameEvent)
+        {
+            if (gameEvent.EventName == "GameStart")
+            {
+                GameStart();
+            }
         }
     }
 }

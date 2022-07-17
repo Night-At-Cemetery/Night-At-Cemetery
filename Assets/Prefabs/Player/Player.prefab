@@ -47854,6 +47854,7 @@ GameObject:
   - component: {fileID: 7772098239277610847}
   - component: {fileID: 7772098239277610833}
   - component: {fileID: 7772098239277610846}
+  - component: {fileID: 7109825305045702496}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -47919,9 +47920,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -905979421
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3ab6c90b86c584ba9b2d3c294c0f18fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -48023,7 +48024,8 @@ MonoBehaviour:
   _crouchDuration: 0.2
   _attackDelay: 0.05
   _attackTime: 0.2
-  _sfxPlayer: {fileID: 7864153305784004067, guid: 94bd8d842d759a04baa10fb665c1cec5, type: 3}
+  _sfxPlayer: {fileID: 7864153305784004067, guid: 94bd8d842d759a04baa10fb665c1cec5,
+    type: 3}
   _runningSfx: {fileID: 8300000, guid: f7a57e85dea63d54ba12910b658e71f3, type: 3}
   _attackSfx: {fileID: 8300000, guid: 2afb5898aac830143936c81dc3d00a3d, type: 3}
   _crouchSfx: {fileID: 8300000, guid: d1f340584c130a14baedb792f343091a, type: 3}
@@ -48057,6 +48059,18 @@ MonoBehaviour:
   score: 0
   scoreIncrement: 1
   scoreIncrementDelay: 0.1
+--- !u!114 &7109825305045702496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772098239277610839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90d008619de8f141bc8d6370bd22a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7772098239410575427
 GameObject:
   m_ObjectHideFlags: 0

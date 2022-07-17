@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoreMountains.InfiniteRunnerEngine
-{
+
     /// <summary>
     /// Add this class to your scene and it'll store your selected character, for use in the upcoming scene
     /// </summary>
@@ -30,4 +29,3 @@ namespace MoreMountains.InfiniteRunnerEngine
             StoredCharacter = null;
         }
     }
-}
