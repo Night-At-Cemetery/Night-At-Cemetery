@@ -15,7 +15,7 @@ public class FlyingEye : MonoBehaviour
     [SerializeField] AudioClip Audioattack;
     [SerializeField] AudioClip AudioTakeHit;
    // [SerializeField] AudioClip Audiodead;
-
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -76,4 +76,5 @@ public class FlyingEye : MonoBehaviour
         Destroy(gameObject);
         Debug.Log("Dead");
     }
+  
 }

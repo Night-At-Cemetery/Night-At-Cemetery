@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 969246354896288851}
   - component: {fileID: -4352954639270977907}
   - component: {fileID: -4928683516892482824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Globin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1598858785
-  m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingLayerID: -905979421
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4723107735738678597, guid: c1cdd26cc09ad224884556bc4d8296ae,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a6617bb2a239047a2242ac9b1cc531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 8
   Acceleration: 0
   Direction: {x: -1, y: 0, z: 0}
   DirectionCanBeChangedBySpawner: 1

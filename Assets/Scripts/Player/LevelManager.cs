@@ -6,6 +6,7 @@ using MoreMountains.InfiniteRunnerEngine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
+using Player;
 
 /// <summary>
 /// Spawns the player, and 
@@ -98,6 +99,8 @@ public class LevelManager : MMSingleton<LevelManager>
     protected float _temporarySpeedFactor;
     protected float _temporarySpeedFactorRemainingTime;
     protected float _temporarySavedSpeed;
+    
+    [SerializeField] private GamePlayManager gamePlayManager;
 
     /// <summary>
     /// Initialization
@@ -230,6 +233,9 @@ public class LevelManager : MMSingleton<LevelManager>
                 new Vector3(StartingPosition.transform.position.x + i * DistanceBetweenCharacters,
                     StartingPosition.transform.position.y, StartingPosition.transform.position.z);
             // we set manually its initial position
+            PlayerController pc = instance.GetComponent<PlayerController>();
+            pc.gamePlayManager = gamePlayManager;
+            
             instance.SetInitialPosition(instance.transform.position);
             // we feed it to the game manager
             CurrentPlayableCharacters.Add(instance);

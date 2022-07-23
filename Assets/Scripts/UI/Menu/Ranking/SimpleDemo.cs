@@ -47,7 +47,6 @@ namespace EnhancedScrollerDemos.SuperSimpleDemo
         /// </summary>
         void Start()
         {
-            // tell the scroller that this script will be its delegate
             scroller.Delegate = this;
 
             IEnumerator e = GetRanking();

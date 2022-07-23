@@ -10,8 +10,8 @@ namespace Player
     
     [Header("Properties")]
     [SerializeField] private float _jumpForce = 7;
-    [SerializeField] private float _crouchDuration = 0.2f;
-    [SerializeField] private float _attackDelay = 0.1f;
+    [SerializeField] private float _crouchDuration = 0.3f;
+    [SerializeField] private float _attackDelay = 0.05f;
     [SerializeField] private float _attackTime = 0.5f;
     
     [Header("SFX")]
@@ -28,7 +28,10 @@ namespace Player
     [SerializeField] private ParticleSystem _crouchVfx;
     [SerializeField] private ParticleSystem _landingVfx;
     
-    
+    [SerializeField] public GamePlayManager gamePlayManager;
+    [SerializeField] public LayerMask enemyLayer;
+    [SerializeField] public Transform attackPoint;
+
     private CapsuleCollider2D _topCollider;
     
     private Animator _animator;
@@ -121,6 +124,21 @@ namespace Player
 
     private void Attack()
     {
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.position, 3f, enemyLayer);
+        Debug.Log(enemy.Length);
+        foreach (Collider2D e in enemy)
+        {
+            if (e.gameObject.tag == "Enemy-FlyingEye" )
+            {
+                if (_isGrounded)
+                {
+                    continue;
+                } 
+                gamePlayManager.score += 50;
+            }
+            e.gameObject.SetActive(false);
+            gamePlayManager.score += 50;
+        }
         _hitbox.SetActive(true);
         _sfxPlayer.PlayOneShot(_attackSfx);
         StartCoroutine(StopAttacking());
@@ -128,13 +146,13 @@ namespace Player
     
     private void Jump()
     {
+        _isGrounded = false;
         _animator.Play("Jump-anim");
    
         _sfxPlayer.Stop();
         _sfxPlayer.PlayOneShot(_jumpSfx);
 
         _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-        _isGrounded = false;
     }
 
     private void Crouch()
@@ -157,8 +175,24 @@ namespace Player
         }
     }
     
-
-
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            gamePlayManager.setHealth(gamePlayManager.currentHealth-1);
+        }
+        if (col.gameObject.tag == "Enemy-FlyingEye")
+        {
+            gamePlayManager.setHealth(gamePlayManager.currentHealth-2);
+        }
+        if (col.gameObject.tag == "Health")
+        {
+            gamePlayManager.setHealth(gamePlayManager.currentHealth+1);
+            Destroy(col.gameObject);
+        }
+        col.gameObject.GetComponent<Collider2D>().enabled = false;
+    }
+    
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Ground"))
@@ -180,7 +214,6 @@ namespace Player
         _animator.Play("Hurt-anim");
         _sfxPlayer.PlayOneShot(_hurtSfx);
     }
-    
 
     IEnumerator StopCrouching()
     {
@@ -205,8 +238,9 @@ namespace Player
     {
         yield return new WaitForSeconds(_attackTime);
         _hitbox.SetActive(false);
-
     }
+    
+    
 }
 }
 
